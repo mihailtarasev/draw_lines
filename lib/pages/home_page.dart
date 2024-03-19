@@ -16,10 +16,36 @@ final class HomePageState extends State<HomePage> {
   }
 
   Widget _controlBar() {
-    return const Row(children: []);
+    return Row(children: [
+      _toggleButton(),
+      Expanded(
+          child: Align(alignment: Alignment.centerRight, child: _roundButton()))
+    ]);
+  }
+
+  Widget _toggleButton() {
+    return ToggleButtons(
+      isSelected: const [true, false],
+      selectedColor: Colors.amber,
+      children: const <Widget>[
+        Icon(Icons.ac_unit),
+        Icon(Icons.call),
+      ],
+      onPressed: (idx) => {},
+    );
+  }
+
+  Widget _roundButton() {
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          shape: const CircleBorder(),
+          padding: const EdgeInsets.all(24),
+        ),
+        child: const Icon(Icons.menu),
+        onPressed: () => {});
   }
 
   Widget _drawScope() {
-    return const Row(children: []);
+    return Expanded(child: Container(color: Colors.green));
   }
 }
